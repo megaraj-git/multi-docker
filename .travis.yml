@@ -2,18 +2,18 @@ sudo : required
 services : docker
 
 before_install :
-  - docker build -t megaraj/react -f ./client/Dockerfile.dev ./client 
+  - docker build -t megarajsrinivasan/react -f ./client/Dockerfile.dev ./client 
 
 script:
-  - docker run -e CI=true megaraj/react npm test
+  - docker run -e CI=true megarajsrinivasan/react npm test
 
 after_success :
-  - docker build -t megaraj/client ./client
-  - docker build -t megaraj/nginx ./nginx
-  - docker build -t megaraj/server ./server
-  - docker build -t megaraj/worker ./worker
+  - docker build -t megarajsrinivasan/client ./client
+  - docker build -t megarajsrinivasan/nginx ./nginx
+  - docker build -t megarajsrinivasan/server ./server
+  - docker build -t megarajsrinivasan/worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
-  - docker push megaraj/client 
-  - docker push megaraj/nginx
-  - docker push megaraj/server
-  - docker push megaraj/worker
+  - docker push megarajsrinivasan/client 
+  - docker push megarajsrinivasan/nginx
+  - docker push megarajsrinivasan/server
+  - docker push megarajsrinivasan/worker
