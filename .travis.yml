@@ -1,13 +1,11 @@
 sudo : required
-language: generic
-services : 
-  - docker
+services : docker
 
 before_install :
   - docker build -t megaraj/react -f ./client/Dockerfile.dev ./client 
 
 script:
-  - docker run -e CI=true megaraj/react-test npm test
+  - docker run -e CI=true megaraj/react npm test
 
 after_success :
   - docker build -t megaraj/client ./client
