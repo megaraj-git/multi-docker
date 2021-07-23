@@ -1,0 +1,34 @@
+{
+    "AWSDockerrunVersion" : 2 ,
+    "ContainerDefinitions" : [{
+        "name" : "client",
+        "image" : "megarajsrinivasan/client",
+        "hostname" : "client",
+        "essential" : false
+    },
+    {
+        "name" : "server",
+        "image" : "megarajsrinivasan/server",
+        "hostname": "api",
+        "essential": false
+    },
+    {
+        "name": "worker",
+        "image": "megarajsrinivasan/worker",
+        "hostname" : "worker",
+        "essential": false
+    },
+    {
+        "name": "nginx",
+        "image": "megarajsrinivasan/nginx",
+        "hostname": "nginx",
+        "portmappings" : 
+            [{
+                "hostPort":80 ,
+                "containerPort": 80
+            }],
+        "essential" : true,
+        "links": ["client","server"]
+        
+    }]
+}
